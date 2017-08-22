@@ -1,0 +1,21 @@
+# Site settings
+title: Dalia Codes
+header-img: img/home-bg.png
+email: sawaya.dalia@gmail.com
+copyright_name: d-d-d-dalia
+description: > # this means to ignore newlines until "baseurl:"
+  because why not
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: 
+github_username:  d-d-d-dalia
+learn_profile: d-d-d-dalia
+email_username: sawaya.dalia@gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
