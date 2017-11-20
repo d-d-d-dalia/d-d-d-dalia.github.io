@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Rails Routing, Forms and Jargon"
-date:       2017-11-20 23:48:06 +0000
+date:       2017-11-20 18:48:07 -0500
 permalink:  rails_routing_forms_and_jargon
 ---
 
