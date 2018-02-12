@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "map dispatch to props"
-date:       2018-02-12 16:31:36 +0000
+date:       2018-02-12 11:31:37 -0500
 permalink:  map_dispatch_to_props
 ---
 
@@ -17,7 +17,7 @@ handleOnSubmit = event => {
  	// this.props.resetGuessFormData()
  }
 ```
-(all of the following is in reference to [Guesses.js](https://github.com/d-d-d-dalia/acClimate/blob/master/make_america_great_client/src/containers/Guesses.js) 
+(all of the following is in reference to [Guesses.js](https://github.com/d-d-d-dalia/acClimate/blob/master/make_america_great_client/src/containers/Guesses.js) )
 
 
 How does the createGuess action get added to the props of the guessesForm component?
@@ -25,6 +25,10 @@ How does the createGuess action get added to the props of the guessesForm compon
 In short, it happens via mapDispatchToProps.
 
 We are able to use mapDispatchToProps, which does exactly what it's name says, by adding a second argument to our connect function (in addition to mapStateToProps).
+
+```
+export default connect(mapStateToProps, mapDispatchToProps)(Guesses)
+```
 
 Now, this.props.createGuess returns the action creator createGuess. The prop createGuess points to the value which is the action creator.
 
@@ -37,6 +41,12 @@ An action creator is just a plain javascript object. What we want is actually to
 This is where bindActionCreators comes in.
 
 The first step is to add dispatch as an argument to the mapDispatchToProps function. We then add bindActionCreators and pass it our new props - in this case createGuess (as well as updatedGuessFormData) - as the thing we want to dispatch.
+
+```
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ guessesFetchData }, dispatch)
+}
+```
 
 The result is createGuess pointing to the dispatch function (rather than the action creator), passing the value of the action creator as its argument.
 
