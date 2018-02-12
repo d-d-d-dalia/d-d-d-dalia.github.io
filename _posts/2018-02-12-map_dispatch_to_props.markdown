@@ -17,20 +17,20 @@ handleOnSubmit = event => {
  	// this.props.resetGuessFormData()
  }
 ```
-(all of the following is in reference to [Guesses.js](https://github.com/d-d-d-dalia/acClimate/blob/master/make_america_great_client/src/containers/Guesses.js) )
+(all of the following is in reference to [GuessesForm.js](https://github.com/d-d-d-dalia/acClimate/blob/master/make_america_great_client/src/containers/GuessesForm.js) )
 
 
 How does the createGuess action get added to the props of the guessesForm component?
 
 In short, it happens via mapDispatchToProps.
 
-We are able to use mapDispatchToProps, which does exactly what it's name says, by adding a second argument to our connect function (in addition to mapStateToProps).
+We are able to use mapDispatchToProps, which does exactly what it's name says, by adding a second argument to our connect function (in addition to mapStateToProps). This *connects* mDTP to the store.
 
 ```
 export default connect(mapStateToProps, mapDispatchToProps)(Guesses)
 ```
 
-Now, this.props.createGuess returns the action creator createGuess. The prop createGuess points to the value which is the action creator.
+Now, this.props.createGuess points to the action creator createGuess. 
 
 This enables us to execute the action by referencing it as a prop, e.g. on line 36 of Guesses.js.
 
@@ -48,6 +48,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 ```
 
-The result is createGuess pointing to the dispatch function (rather than the action creator), passing the value of the action creator as its argument.
+The result is createGuess pointing to the dispatch function (rather than just the action creator), passing the value of the action creator as its argument.
 
 This strategy allows us to remove all reference to our store from our component.
