@@ -24,7 +24,7 @@ How does the createGuess action get added to the props of the guessesForm compon
 
 In short, it happens via mapDispatchToProps.
 
-We are able to use mapDispatchToProps, which does exactly what it's name says, by adding a second argument to our connect function (in addition to mapStateToProps). This *connects* mDTP to the store.
+We are able to use mapDispatchToProps, which does exactly what it's name says, by adding a second argument to our connect function (in addition to mapStateToProps). This *connects* the coponent, in this case, guessesForm.js, to the store.
 
 ```
 export default connect(mapStateToProps, mapDispatchToProps)(Guesses)
@@ -40,14 +40,14 @@ An action creator is just a plain javascript object. What we want is actually to
 
 This is where bindActionCreators comes in.
 
-The first step is to add dispatch as an argument to the mapDispatchToProps function. We then add bindActionCreators and pass it our new props - in this case createGuess (as well as updatedGuessFormData) - as the thing we want to dispatch.
+The first step is to add dispatch as an argument to the mapDispatchToProps function. We then add bindActionCreators and pass it our new props - in this case createGuess - as the thing we want to dispatch.
 
 ```
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ guessesFetchData }, dispatch)
+    return bindActionCreators({ updateGuessesFormData, createGuess }, dispatch)
 }
 ```
 
-The result is createGuess pointing to the dispatch function (rather than just the action creator), passing the value of the action creator as its argument.
+The result is createGuess pointing to the dispatch function (rather than just the action creator), passing the value of the action creator as its argument, thus automatically invoking the action when we reference it as props in the component.
 
 This strategy allows us to remove all reference to our store from our component.
