@@ -14,7 +14,6 @@ handleOnSubmit = event => {
 
  	this.props.createGuess(this.props.guessesFormData)
  	this.setState({showResult: true})
- 	// this.props.resetGuessFormData()
  }
 ```
 (all of the following is in reference to [GuessesForm.js](https://github.com/d-d-d-dalia/acClimate/blob/master/make_america_great_client/src/containers/GuessesForm.js) )
